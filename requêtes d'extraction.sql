@@ -9,12 +9,12 @@ select trunc (orchestra_dossier.date_creation),
 		webguce.core_good.GOOD_HS_CODE,
 		webguce.core_good.GOOD_quantity,
 		webguce.core_good.GOOD_weight,
-		from ((((orchestra_dossier   join (select id_,
+		from( ((((orchestra_dossier   join (select id_,
         duration_ from jbpm4_hist_procinst where duration_ is not null) jbpm4_hist_procinst  on orchestra_dossier.bpm_id=jbpm4_hist_procinst.id_) 
 		left join ORCHESTRA_MESSAGE on orchestra_message.dossier_id = orchestra_dossier.ID) 
 		left join ORCHESTRA_MESSAGE_TYPE on orchestra_message.service_action= ORCHESTRA_MESSAGE_TYPE.message_type_id)
 		left join orchestra_process on orchestra_dossier.process_id = orchestra_process.id )
-		left join webguce.core_good on orchestra_dossier.NUMERO_DOSSIER  =webguce.core_good.RECORD_ID
+		left join webguce.core_good on orchestra_dossier.NUMERO_DOSSIER  =webguce.core_good.RECORD_ID)
 		group by trunc(orchestra_dossier.date_creation),
         ORCHESTRA_MESSAGE_TYPE.MESSAGE_TYPE_CATEGORY ,
 		ORCHESTRA_PROCESS.nom,
@@ -45,8 +45,7 @@ left join orchestra_charger on orchestra_charger.CH_CODE=orchestra_dossier.charg
 
         
         /***requête d'extraction des informations sur les partenaires **/
-
-select count (distinct jbpm4_hist_task.dbid_ ) as nombre_de_taches ,
+select trunc(jbpm4_hist_task.create_),count (distinct jbpm4_hist_task.dbid_ ) as nombre_de_taches ,
 avg(JBPM4_HIST_TASK.DURATION_) as duration_traitement,
         jbpm4_hist_task.assignee_,
 		count (distinct orchestra_dossier.id ) as nombre_de_dossiers,
@@ -81,6 +80,4 @@ avg(JBPM4_HIST_TASK.DURATION_) as duration_traitement,
         webguce.core_good.GOOD_quantity,
 		webguce.core_good.GOOD_weight,
 		jbpm4_hist_actinst.ACTIVITY_NAME_
-
-
 
