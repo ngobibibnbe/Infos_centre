@@ -1,28 +1,29 @@
 /********requête d'extraction des informations sur les procédures et les dossiers **/
-select trunc (orchestra_dossier.date_creation),
-
+select trunc (orchestra_dossier.date_creation) as journee ,
 		count (distinct orchestra_dossier.id ) as nombre_de_dossier,
-        ORCHESTRA_MESSAGE_TYPE.MESSAGE_TYPE_CATEGORY,
+		count (distinct MS.MESSAGE_TYPE_CATEGORY) as nombre_de_Signature,
+		count (distinct MCI.MESSAGE_TYPE_CATEGORY) as nombre_de_CI,
+   ( count (distinct orchestra_dossier.id ) -count (distinct MS.MESSAGE_TYPE_CATEGORY) )as dossier_en_cours,
         orchestra_process.nom,orchestra_process.id,
-        min(jbpm4_hist_procinst.duration_/3600) as delais_le_plus_bas,
-		max(jbpm4_hist_procinst.duration_/3600) as delai_le_plus_haut,
 		webguce.core_good.GOOD_HS_CODE,
 		webguce.core_good.GOOD_quantity,
 		webguce.core_good.GOOD_weight,
-		from( ((((orchestra_dossier   join (select id_,
+        avg(duration_)
+		from(( ((((orchestra_dossier   join (select id_,
         duration_ from jbpm4_hist_procinst where duration_ is not null) jbpm4_hist_procinst  on orchestra_dossier.bpm_id=jbpm4_hist_procinst.id_) 
 		left join ORCHESTRA_MESSAGE on orchestra_message.dossier_id = orchestra_dossier.ID) 
 		left join ORCHESTRA_MESSAGE_TYPE on orchestra_message.service_action= ORCHESTRA_MESSAGE_TYPE.message_type_id)
 		left join orchestra_process on orchestra_dossier.process_id = orchestra_process.id )
 		left join webguce.core_good on orchestra_dossier.NUMERO_DOSSIER  =webguce.core_good.RECORD_ID)
+        left join (select message_type_id, message_type_category from ORCHESTRA_MESSAGE_TYPE where message_type_category = 'SIGNATURE') MS on orchestra_message.service_action= MS.message_type_id)
+        left join (select  message_type_id, message_type_category from ORCHESTRA_MESSAGE_TYPE where message_type_category = 'CI_REQUEST') MCI on orchestra_message.service_action= MCI.message_type_id
+        left join (select  message_type_id,message_type_category from ORCHESTRA_MESSAGE_TYPE where message_type_category = 'INIT') MI on orchestra_message.service_action= MI.message_type_id
+
 		group by trunc(orchestra_dossier.date_creation),
-        ORCHESTRA_MESSAGE_TYPE.MESSAGE_TYPE_CATEGORY ,
-		ORCHESTRA_PROCESS.nom,
-        jbpm4_hist_procinst.quartile,
+		ORCHESTRA_PROCESS.nom,orchestra_process.id,
         webguce.core_good.GOOD_HS_CODE,
 		webguce.core_good.GOOD_quantity,
-		webguce.core_good.GOOD_weight,
-
+		webguce.core_good.GOOD_weight
 
 /*ajouter :
 -les durées des signatures (inclus le c CI)
@@ -46,7 +47,7 @@ left join orchestra_charger on orchestra_charger.CH_CODE=orchestra_dossier.charg
         
         /***requête d'extraction des informations sur les partenaires **/
 select trunc(jbpm4_hist_task.create_),count (distinct jbpm4_hist_task.dbid_ ) as nombre_de_taches ,
-avg(JBPM4_HIST_TASK.DURATION_) as duration_traitement,
+avg(JBPM4_HIST_TASK.DURATION_/3600) as duration_traitement,
         jbpm4_hist_task.assignee_,
 		count (distinct orchestra_dossier.id ) as nombre_de_dossiers,
         ORCHESTRA_MESSAGE_TYPE.MESSAGE_TYPE_CATEGORY as etat_des_dossiers,
