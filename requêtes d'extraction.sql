@@ -1,14 +1,19 @@
 /********requête d'extraction des informations sur les procédures et les dossiers **/
 select trunc (orchestra_dossier.date_creation) as journee ,
 		count (distinct orchestra_dossier.id ) as nombre_de_dossier,
-		count (distinct MS.MESSAGE_TYPE_CATEGORY) as nombre_de_Signature,
-		count (distinct MCI.MESSAGE_TYPE_CATEGORY) as nombre_de_CI,
-   ( count (distinct orchestra_dossier.id ) -count (distinct MS.MESSAGE_TYPE_CATEGORY) )as dossier_en_cours,
-        orchestra_process.nom,orchestra_process.id,
-		webguce.core_good.GOOD_HS_CODE,
-		webguce.core_good.GOOD_quantity,
-		webguce.core_good.GOOD_weight,
-        avg(duration_)
+
+		count (distinct (case when orchestra_Message_type.MESSAGE_TYPE_CATEGORY = 'SIGNATURE' then orchestra_dossier.date_creation end) ) as nombre_de_Signature,
+        count (distinct (case when orchestra_Message_type.MESSAGE_TYPE_CATEGORY = 'CI_REQUEST' then orchestra_dossier.date_creation end) ) as nombre_de_CI,
+        count (distinct (case when orchestra_Message_type.MESSAGE_TYPE_CATEGORY = 'CI_REQUEST' then orchestra_dossier.date_creation end) ) as nombre_de_rejection,
+
+
+    count (distinct orchestra_dossier.id ) -count (distinct (case when orchestra_Message_type.MESSAGE_TYPE_CATEGORY = 'SIGNATURE' then orchestra_dossier.date_creation end) )
+    - count (distinct (case when orchestra_Message_type.MESSAGE_TYPE_CATEGORY = 'CI_REQUEST' then orchestra_dossier.date_creation end) ) as  dossier_en_cours,
+        orchestra_process.nom as nom_procedure ,orchestra_process.id as id_procedure ,
+		webguce.core_good.GOOD_HS_CODE ,
+		avg(webguce.core_good.GOOD_quantity )as qte_moyenne,
+		avg (webguce.core_good.GOOD_weight) as poid_moyen,
+        avg(duration_) as duree_moyenne
 		from(( ((((orchestra_dossier   join (select id_,
         duration_ from jbpm4_hist_procinst where duration_ is not null) jbpm4_hist_procinst  on orchestra_dossier.bpm_id=jbpm4_hist_procinst.id_) 
 		left join ORCHESTRA_MESSAGE on orchestra_message.dossier_id = orchestra_dossier.ID) 
@@ -17,18 +22,16 @@ select trunc (orchestra_dossier.date_creation) as journee ,
 		left join webguce.core_good on orchestra_dossier.NUMERO_DOSSIER  =webguce.core_good.RECORD_ID)
         left join (select message_type_id, message_type_category from ORCHESTRA_MESSAGE_TYPE where message_type_category = 'SIGNATURE') MS on orchestra_message.service_action= MS.message_type_id)
         left join (select  message_type_id, message_type_category from ORCHESTRA_MESSAGE_TYPE where message_type_category = 'CI_REQUEST') MCI on orchestra_message.service_action= MCI.message_type_id
-        left join (select  message_type_id,message_type_category from ORCHESTRA_MESSAGE_TYPE where message_type_category = 'INIT') MI on orchestra_message.service_action= MI.message_type_id
+        left join (select  message_type_id,message_type_category from ORCHESTRA_MESSAGE_TYPE where message_type_category = 'REJECTION') MR on orchestra_message.service_action= MR.message_type_id
 
 		group by trunc(orchestra_dossier.date_creation),
 		ORCHESTRA_PROCESS.nom,orchestra_process.id,
-        webguce.core_good.GOOD_HS_CODE,
-		webguce.core_good.GOOD_quantity,
-		webguce.core_good.GOOD_weight
+        webguce.core_good.GOOD_HS_CODE
 
 /*ajouter :
 -les durées des signatures (inclus le c CI)
 -le nombre de dossier actif
-
+******fait
 **/
 
 /***requête d'extraction des  délais des procédures (quartiles ,avg)***/
