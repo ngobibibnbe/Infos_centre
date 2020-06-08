@@ -1,0 +1,14 @@
+
+
+[
+
+  {
+    "model": "presentation.user",
+    "pk": 1,
+    "fields":{
+      "first_name": "sophie",
+      "last_name": "sophia",
+      "roles": ["minsante"]}
+    }
+  
+]
