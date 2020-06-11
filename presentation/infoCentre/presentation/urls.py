@@ -11,6 +11,6 @@ from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
-     path('', login_required(TemplateView.as_view(template_name='visualisations/login.html')))
+     path('', login_required(TemplateView.as_view(template_name='visualisations/index.html')))
 ]
 
