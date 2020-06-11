@@ -32,15 +32,25 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'presentation.apps.PresentationConfig',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth',
+    'rest_auth.registration',
 ]
 
 MIDDLEWARE = [
+        'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,3 +139,8 @@ LOGIN_URL = '/'
 TEMPLATE_DIRS = (
     BASE_DIR + 'presentation/templates/',
 )
+
+
+
+
+

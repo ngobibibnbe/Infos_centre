@@ -17,15 +17,27 @@ from django.contrib import admin
 from django.urls import path,include
 
 from . import views
+from rest_framework import routers
 from django.views.generic import TemplateView
 from django.conf.urls import  include, url
 from django.contrib.auth.decorators import login_required
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
+    path('auth/login/', obtain_jwt_token),
+      path('auth/', include('rest_auth.urls')),
+    path('auth/signup/', include('rest_auth.registration.urls')),
+    path('auth/refresh-token/', refresh_jwt_token),
+    
+path('updateUser',views.UpdateUser),
    path('infoCentre/', include('presentation.urls')),
 
     path('admin/', admin.site.urls),
     url(r'^$', views.LoginView.as_view()),
     url(r'^logout/$', views.LogoutView.as_view()),
-    url(r'^visualise/$', login_required(TemplateView.as_view(template_name='backoffice/index.html'))),
+
 ]
