@@ -1,2 +1,15 @@
-<p>Vous êtes identifié!</p>
+{% extends "visualisations/layout.html" %}
+
+{% load static %}
+
+
+{% block title %}InfoCentre Guce{% endblock %}
+
+{% block content %}
+
+                <iframe src={{link}}> </iframe>
+  <!-- plugins:js -->
+{% endblock %}
+  
+ <p>Vous êtes identifié!</p>
 <p><a href="/logout/">Sortir</a></p>

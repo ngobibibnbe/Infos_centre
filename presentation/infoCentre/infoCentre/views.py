@@ -54,6 +54,9 @@ from django.http import *
 from django.views.generic import TemplateView
 from django.conf import settings
 
+
+
+
 class LoginView(TemplateView):
 
   template_name = 'login/login.html'
@@ -72,7 +75,7 @@ class LoginView(TemplateView):
 
 class LogoutView(TemplateView):
 
-  template_name = 'login/index.html'
+  template_name = 'login/login.html'
 
   def get(self, request, **kwargs):
 
