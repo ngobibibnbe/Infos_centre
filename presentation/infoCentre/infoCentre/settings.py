@@ -34,13 +34,13 @@ INSTALLED_APPS = [
     'presentation.apps.PresentationConfig',
     'rest_framework',
     'django.contrib.admin',
-    'django.contrib.auth',
+        'django.contrib.auth',
+
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -140,7 +140,9 @@ TEMPLATE_DIRS = (
     BASE_DIR + 'presentation/templates/',
 )
 
+SITE_ID=1
+TIME_ZONE = 'Europe/Paris'
 
-
-
-
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = 'fr-FR'
