@@ -42,9 +42,7 @@
         </a>
       </div>
       <div class="mdc-drawer__content">
-        <div class="user-info">
-          <p class="name" style="text-align: center;">nom user </p>
-        </div>
+        
         <div class="mdc-list-group">
           <nav class="mdc-list mdc-drawer-menu">
             <div class="mdc-list-item mdc-drawer-item">
@@ -263,9 +261,9 @@
                   <button class="mdc-button mdc-menu-button">
                     <span class="d-flex align-items-center">
                       <span class="figure">
-                        <img src="{%static 'presentation/assets/images/faces/face1.jpg'%}" alt="user" class="user">
+                        <img src="{%static 'presentation/images/avatar.png'%}" alt="user" class="user">
                       </span>
-                      <span class="user-name">username</span>
+                      <span class="user-name">{{user.username}}</span>
                     </span>
                   </button>
                   <div class="mdc-menu mdc-menu-surface" tabindex="-1">
@@ -364,7 +362,7 @@
         {% endblock %}
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
-        <main class="content-wrapper">
+        <main class="content-wrapper" style="color: white; background-color: white;">
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
               {% block content %}{% endblock %}
@@ -376,13 +374,13 @@
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                <span class="tx-14">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
+                <span class="tx-14">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">GUCE</a>. All rights reserved.</span>
               </div>
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop d-flex justify-content-end">
                 <div class="d-flex align-items-center">
-                  <a href="">Documentation</a>
+                  <a href="">Contactez-nous</a>
                   <span class="vertical-divider"></span>
-                  <a href="">FAQ</a>
+                  <a href="">site Web</a>
                 </div>
               </div>
             </div>

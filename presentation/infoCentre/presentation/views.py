@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect,Http404
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
-from .model import Kibana_frame
+from .models import Kibana_frame
 
 
 
@@ -18,15 +18,14 @@ views={
 def getVue(request,id):
     if request.user.is_authenticated:
         try:
-            e=Kibana_frame.objects.get("code"=id)
+            link=Kibana_frame.objects.get(code=id)
         except Kibana_frame.DoesNotExist:
             raise Http404("ce Code d'analyse n'existe pas ")
-        return render(request,'visualisations/index.html',{'link':a})
+        
+        return render(request,'visualisations/index.html',{'link':link,'user':request.user})
     else:
         raise Http404("Vous n'êtes pas autorisé à rentrer ici")
 
 
         
     
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")

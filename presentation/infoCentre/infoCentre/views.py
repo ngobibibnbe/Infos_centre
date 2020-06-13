@@ -70,7 +70,7 @@ class LoginView(TemplateView):
         login(request, user)
         return HttpResponseRedirect( settings.LOGIN_REDIRECT_URL )
 
-    return render(request, self.template_name)
+    return render(request, self.template_name,{'user':request.user})
 
 
 class LogoutView(TemplateView):
