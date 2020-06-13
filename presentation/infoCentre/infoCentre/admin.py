@@ -4,6 +4,7 @@ from django.contrib.admin import AdminSite
 from django.contrib import admin
 
 from django.utils.translation import ugettext_lazy
+from presentation.models import Kibana_frame
 
 class MyAdminSite(AdminSite):
     # Text to put at the end of each page's <title>.
@@ -18,3 +19,5 @@ class MyAdminSite(AdminSite):
 admin_site = MyAdminSite(name='my_project_admin')
 admin_site.register(Group, GroupAdmin)
 admin_site.register(User, UserAdmin)
+
+admin_site.register(Kibana_frame)

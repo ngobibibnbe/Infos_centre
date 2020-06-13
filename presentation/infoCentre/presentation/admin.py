@@ -1,9 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import User,Question,Choice
+from .models import Kibana_frame
 
-admin.site.register(Question)
-admin.site.register(Choice)
-admin.site.register(User)
+admin.site.register(Kibana_frame)
 
