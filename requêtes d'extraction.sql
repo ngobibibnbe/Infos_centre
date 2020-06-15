@@ -27,12 +27,12 @@ select trunc (orchestra_dossier.date_creation) as journee ,
 
 
 /*ajouter :
--les durées des signatures (inclus le c CI)
+-les durées des signatures (inclus le c CI) pour l'extraction des données 
 -le nombre de dossier actif
 ******fait
 **/
 
-/***requête d'extraction des  délais des procédures (quartiles ,avg)***/
+/* *************************************requête d'extraction des  délais des procédures (quartiles ,avg)***/
 select jbpm4_hist_procinst.start_,jbpm4_hist_procinst.duration_/3600 as duration_,
 		ORCHESTRA_CHARGER.CH_NAME as nom_chargeur,
 		Orchestra_charger.ch_niu as NIU_chargeur,
@@ -46,7 +46,7 @@ left join orchestra_charger on orchestra_charger.CH_CODE=orchestra_dossier.charg
 
 
         
-        /***requête d'extraction des informations sur les partenaires **/
+        /*  *******************************requête d'extraction des informations sur les partenaires **/
 select trunc(jbpm4_hist_task.create_),count (distinct jbpm4_hist_task.dbid_ ) as nombre_de_taches ,
 avg(JBPM4_HIST_TASK.DURATION_/3600) as duration_traitement,
         jbpm4_hist_task.assignee_,

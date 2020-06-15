@@ -18,7 +18,7 @@ views={
 def getVue(request,id):
     if request.user.is_authenticated:
         try:
-            link=Kibana_frame.objects.get(code=id)
+            link=Kibana_frame.objects.get(code=id).link
         except Kibana_frame.DoesNotExist:
             raise Http404("ce Code d'analyse n'existe pas ")
         
