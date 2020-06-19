@@ -1,0 +1,4 @@
+-qualité de sdonnées 
+ doing businesss 
+certains dashboard particulier par utilisateur 
+verifier la connexion entre kibana et le sql 

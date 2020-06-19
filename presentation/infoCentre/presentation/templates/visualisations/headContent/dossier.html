@@ -1,0 +1,28 @@
+{% extends "visualisations/index.html" %}
+
+{% load static %}
+
+
+{% block title %}InfoCentre Guce{% endblock %}
+
+{% block headContent %}
+
+<div class="container" style="background-color: #4285f4 !important;">
+            <div class="row">
+             
+              <div class="col"><a href="/infoCentre/DossierVue/DDT" type="button" class="btn btn-primary">
+              Suivi des délais</a>
+              </div>
+              <div class="col" ><a href="/infoCentre/DossierVue/DEND2ans " type="button" class="btn btn-primary">
+              suivi de la variation du nombre de dossiers </a>
+              </div>
+              
+              <div class="col" ><a href="/infoCentre/DossierVue/DENDS" type="button" class="btn btn-primary">
+              suivi des Statut des dossiers </a>
+              </div>
+              
+             
+              
+            </div>
+          </div>
+{% endblock %}

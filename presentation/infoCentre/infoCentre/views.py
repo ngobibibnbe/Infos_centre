@@ -40,23 +40,16 @@ def UpdateUser(request):
         return JsonResponse({'error': 'Something terrible went wrong'}, safe=False, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-"""à partir d'ici c'est l'ancien travail quand je voulais utiliser django en fullstack"""
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
-
-def login(request,name,password):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response)
-
 
 from django.contrib.auth import authenticate, login, logout
 from django.http import *
 from django.views.generic import TemplateView
 from django.conf import settings
 
-
-
-
+def page_not_found_view(request,Exception):
+     return render(request,'errors/404.html')
+        
+    
 class LoginView(TemplateView):
 
   template_name = 'login/login.html'

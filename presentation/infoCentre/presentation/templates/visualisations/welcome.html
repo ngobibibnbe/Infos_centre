@@ -1,0 +1,252 @@
+{% extends "visualisations/layout.html" %}
+
+{% load static %}
+
+
+{% block title %}InfoCentre Guce{% endblock %}
+
+
+
+{% block headContent %}
+
+<div class="container" style="background-color: #4285f4 !important;">
+            <div class="row">
+             
+              <div class="col"><a href="/infoCentre/DossierVue/DDT" type="button" class="btn btn-primary">
+              BI</a>
+              </div>
+              <div class="col" ><a href="/infoCentre/DossierVue/DEND2ans " type="button" class="btn btn-primary">
+              Gestion des Accès </a>
+              </div>
+              
+              <div class="col" ><a href="/infoCentre/DossierVue/DENDS" type="button" class="btn btn-primary">
+              Machine Learning </a>
+              </div>
+              
+             
+              
+            </div>
+          </div>
+{% endblock %}
+
+
+{% block content %}
+<style>
+        body
+    {
+        background:#00bcd4;
+    }
+
+    h1
+    {
+        color:#fff;
+        margin:40px 0 60px 0;
+        font-weight:300;
+    }
+
+    .our-team-main
+    {
+        width:100%;
+        height:auto;
+        border-bottom:5px #323233 solid;
+        background:#fff;
+        text-align:center;
+        border-radius:10px;
+        overflow:scroll;
+        position:relative;
+        transition:0.5s;
+        margin-bottom:28px;
+    }
+
+
+    .our-team-main img
+    {
+        border-radius:50%;
+        margin-bottom:10px;
+        width: 200px;
+    }
+
+    .our-team-main h3
+    {
+        font-size:20px;
+        font-weight:700;
+    }
+
+    .our-team-main p
+    {
+        margin-bottom:0;
+    }
+
+    .team-back
+    {
+        width:100%;
+        height:auto;
+        position:absolute;
+        top:0;
+        left:0;
+        padding:5px 15px 0 15px;
+        text-align:left;
+        background:#fff;
+        
+    }
+
+    .team-front
+    {
+        width:100%;
+        height:auto;
+        position:relative;
+        z-index:10;
+        background:#fff;
+        padding:15px;
+        bottom:0px;
+        transition: all 0.5s ease;
+    }
+
+    .our-team-main:hover .team-front
+    {
+        bottom:-200px;
+        transition: all 0.5s ease;
+    }
+
+    .our-team-main:hover
+    {
+        border-color:#777;
+        transition:0.5s;
+    }
+
+    /*our-team-main*/
+	</style>
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+    <h1 class="text-center">Modules de l'InfoCentre</h1>
+
+	
+	<div class="container">
+	<div class="row">
+	
+        <!--team-1-->
+        <div class="col-lg-4">
+            <div class="our-team-main">
+            
+                <div class="team-front">
+                    <img src="{%static 'presentation/images/bi.jpg'%}" class="img-fluid" />
+                    <h3>Business Intelligence </h3>
+                    <p>Suivez l'Evolution du commerce Extérieur et orientez vos activités</p>
+                </div>
+                
+                <div class="team-back">
+                    <span>
+                     Le Module BI de l'InfoCentre vous permettra de monitorer Le Commerce extérieur 
+                     à travers le suivie des Indicateurs Clés de Performances , En Bonus ce module vous permettra
+                     de suivre votre activité et son impact sur le Commerce Extérieur .
+                     Ce module  sera donc centré sur :
+
+
+                    
+                    </span>
+
+                    
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </hr>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                    </hr>
+                    <span>
+                    <ul>
+                    
+                    <li>Les indicateurs de délais
+                    </li>
+                    <li>les Indicateur Doing Business
+                    </li>
+                    <li>L'etude des Dossies
+                    </li>
+                    <li>l'Etude des Procédures 
+                    </li>
+                    <li>l'Etude des Partenaires: Celui ci sera axé sur votre activité 
+                    </li>
+                    <li>le suivi de vos objectifs 
+                    </li>
+                    </ul>
+                    </span>
+                </div>
+            
+            </div>
+        </div>
+        <!--team-1-->
+        <!--team-2-->
+        <div class="col-lg-4">
+            <div class="our-team-main">
+            
+                <div class="team-front">
+                    <img src="{%static 'presentation/images/ML.jpg'%}" class="img-fluid" />
+                    <h3>Machine Learning </h3>
+                    <p>Que se passe t'il?Qu'est se passera t'il?</p>
+                </div>
+                
+                <div class="team-back">
+                    <span>
+                    Ce module vous permettra de detecter des anomalies sur votre activité et de prédire l'etat
+                    de vos indicateurs clef de Performance.Il sera donc centré sur :
+                    </span>
+                     
+
+                    <span>
+                    <ul>
+                    
+                    <li>La detection d'anomalie dans le suivi de l'évolution sur les dossiers
+                    </li>
+                    <li>Prédire les côuts et les délais des dossiers
+                    </li>
+                    <li>prédire les délais des tâches des Partenaires 
+                    </li>
+                    
+                    </ul>
+                    </span>
+                </div>
+            
+            </div>
+        </div>
+        <!--team-1-->
+        <!--team-1-->
+        <div class="col-lg-4">
+            <div class="our-team-main">
+            
+                <div class="team-front">
+                    <img src="{%static 'presentation/images/gestion-Acces.jpg'%}" class="img-fluid" />
+                    <h3>Gestion des Accès </h3>
+                    <p>Protégez vos Informations</p>
+                </div>
+                
+                <div class="team-back">
+                    <span>
+                    Ce module vous permettra 
+                    de gérer l'accès à votre activité et d'attribuer des droits particuliers 
+                    </span>
+                </div>
+            
+            </div>
+        </div>
+        <!--team-1-->
+	
+
+	
+	
+	
+	</div>
+	</div>
+
+{% endblock %}

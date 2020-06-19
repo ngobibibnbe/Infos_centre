@@ -4,7 +4,6 @@
 <html lang="en">
 <head>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'presentation/login.css' %}">
 
 
   <meta charset="UTF-8">
@@ -22,6 +21,15 @@
   <link rel="stylesheet" href="{%static 'presentation/assets/css/demo/style.css'%}">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="{%static 'presentation/assets/images/favicon.png'%}" />
+    <!-- MDB -->
+      <link rel="stylesheet" href="{%static 'presentation/MDB/css/fontawesome.css'%}">
+
+  <link rel="stylesheet" href="{%static 'presentation/MDB/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'presentation/MDB/css/mdb.min.css'%}">
+
+  <link rel="stylesheet" href="{%static 'presentation/MDB/css/mdb.css'%}">
+
+
 
     <link rel="stylesheet" href="style.css">
     <title>{% block title %}My amazing site{% endblock %}</title>
@@ -38,161 +46,71 @@
     <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
       <div class="mdc-drawer__header" style="margin: unset;">
         <a href="#" class="brand-logo">
-          <img src="{%static 'presentation/assets/images/sidebar/logo-guce.png'%}" style="width:70% ;display: block;margin-left: auto;margin-right: auto;" alt="logo">
+          <img src="{%static 'presentation/assets/images/sidebar/logo-guce.png'%}" style="width:40% ;display: block;margin-left: auto;margin-right: auto;float:left;" alt="logo">
+        
         </a>
+
+         <h3>GUCE InfoCentre </h3>
       </div>
       <div class="mdc-drawer__content">
         
         <div class="mdc-list-group">
           <nav class="mdc-list mdc-drawer-menu">
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="index.html">
+              <a class="mdc-drawer-link" href="/infoCentre/welcome">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i>
                 Dashboard
               </a>
             </div>
-           <br>
-
-
-
-
-
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-expansion-panel-link"  href="#" data-toggle="expansionPanel" data-target="idb-sub-menu">
+              <a class="mdc-expansion-panel-link"  href="/infoCentre/DeadlineIndicatorsVue/PDMP" data-toggle="expansionPanel" data-target="idb-sub-menu">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
                               <P style=" margin-bottom: 0.1rem !important ;
                   margin-top: 0;">
-                            Indicateur Doing Business </P>
-                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+                            Indicateur de delais </P>
               </a>
-              <div class="mdc-expansion-panel" id="idb-sub-menu">
-                <nav class="mdc-list mdc-drawer-submenu">
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/DDT">
-                      
-                         Délai de traitement des dossiers 
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/PDMP">
-                      délai moyen des procedures
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="pages/ui-features/typography.html">
-                      pas encore spécifié 
-                    </a>
-                  </div>
-                </nav>
-              </div>
+              
             </div>
-
-
-
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="Dossier-sub-menu">
+              <a class="mdc-expansion-panel-link"  href="/infoCentre/DossierVue/DB" data-toggle="expansionPanel" data-target="idb-sub-menu">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
-                Dossier
-                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+                              <P style=" margin-bottom: 0.1rem !important ;
+                  margin-top: 0;">
+                           Etude des dossiers </P>
               </a>
-              <div class="mdc-expansion-panel" id="Dossier-sub-menu">
-                <nav class="mdc-list mdc-drawer-submenu">
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/DEND1">
-                      
-                       Evolution du nombre de dossier
-                    </a>
-                  </div>
-                  
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/DEND2">
-                      
-                       Evolution du nombre de dossier (en cours, complément d'information,signé,rejet)
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/DEND4">
-                      evolution du nombre de dossier journalier en fonctoin de son etat(CI,initié,rejeté,signé))
-                    </a>
-                  </div>
-                  
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/DEND3">
-                      
-                       Evolution du nombre de dossier comparé sur deux ans
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/DB">
-                      
-                       Bilan des dossiers 
-                    </a>
-                  </div>
-                  
-                  
-                  
-                </nav>
-              </div>
+              
             </div>
-
-
-
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="procedure-sub-menu">
+              <a class="mdc-expansion-panel-link"  href="/infoCentre/ProcedureVue/PPPEncours" data-toggle="expansionPanel" data-target="idb-sub-menu">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
-                Procedures
-                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+                              <P style=" margin-bottom: 0.1rem !important ;
+                  margin-top: 0;">
+                            Etude des Procedures </P>
               </a>
-              <div class="mdc-expansion-panel" id="procedure-sub-menu">
-                <nav class="mdc-list mdc-drawer-submenu">
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/PPP">
-                      proportion des procédures en cours
-                    </a>
-                  </div>
-                  
-                  
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/PNDPP">
-                      nombre de dossier par procédures
-                    </a>
-                  </div>
-                  
-                  
-
-                </nav>
-              </div>
+              
             </div>
-
-
-
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="Partenaire-sub-menu">
+              <a class="mdc-expansion-panel-link"  href="/infoCentre/PartenaireVue/PAENDT" data-toggle="expansionPanel" data-target="idb-sub-menu">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
-                Partenaire
-                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+                              <P style=" margin-bottom: 0.1rem !important ;
+                  margin-top: 0;">
+                            Etude des Partenaires </P>
               </a>
-              <div class="mdc-expansion-panel" id="Partenaire-sub-menu">
-                <nav class="mdc-list mdc-drawer-submenu">
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/PAENDT">
-                      Evolution du nombre de dossier traité
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/PADRCI">
-                      Délai de réponse au Complement d'information
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-link" href="/infoCentre/vues/PAETTP">
-                      evolution de traitement de tâche par partenaire
-                    </a>
-                  </div>
-                </nav>
-              </div>
+              
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-expansion-panel-link"  href="/infoCentre/PartenaireVue/PPPEncours" data-toggle="expansionPanel" data-target="idb-sub-menu">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
+                              <P style=" margin-bottom: 0.1rem !important ;
+                  margin-top: 0;">
+                            Objectifs </P>
+              </a>
+              
             </div>
 
+            
+
+           
             
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sample-page-submenu">
@@ -355,10 +273,23 @@
 
         {% endblock %}
       <!-- partial -->
+      
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
-        <main class="content-wrapper" style="color: white; background-color: white;">
+      {% block headContent %}{% endblock %}
+      
+        <main class="content-wrapper" >
           <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
+          
+
+            <div class="mdc-layout-grid__inner"
+            style="
+                  @media (min-width: 992px)
+              .mdc-layout-grid__inner {
+                  display: block;
+                  margin: 0; 
+                  grid-gap: 0px;}
+
+            ">
               {% block content %}{% endblock %}
             </div>
           </div>
@@ -366,7 +297,7 @@
         <!-- partial:../../partials/_footer.html -->
         <footer>
           <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__inner" >
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                 <span class="tx-14">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">GUCE</a>. All rights reserved.</span>
               </div>
@@ -401,3 +332,5 @@
   <script src="{%static 'presentation/assets/js/dashboard.js'%}"></script>
   <!-- End custom js for this page-->
 </html>
+
+

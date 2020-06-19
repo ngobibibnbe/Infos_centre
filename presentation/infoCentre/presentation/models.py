@@ -17,9 +17,11 @@ class Kibana_frame(models.Model):
     def description(self):
         return self.description
         
-    code=models.CharField(max_length=100)
-    link=models.TextField(blank=True, max_length=5000)
-    description= models.TextField(blank=True, max_length=5000)
+    code=models.CharField(max_length=100, unique=True,blank=False)
+    link=models.TextField(blank=False, max_length=5000)
+    description= models.TextField( max_length=5000,blank=True)
+    height= models.PositiveIntegerField(default=1000)
+
 
 
 

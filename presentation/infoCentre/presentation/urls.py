@@ -11,7 +11,18 @@ from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
-     path('', login_required(TemplateView.as_view(template_name='visualisations/index.html')))
+     path('', views.welcome)
     ,path('vues/<id>', views.getVue)
+    ,path('DeadlineIndicatorsVue/<id>', views.getDeadlineIndicatorsVue)
+    ,path('DossierVue/<id>', views.getDossierVue)
+    ,path('ProcedureVue/<id>', views.getProcedureVue)
+    ,path('PartenaireVue/<id>', views.getPartenaireVue)
+
+
+
+
+
+        ,path('welcome', views.welcome)
+
 ]
 
