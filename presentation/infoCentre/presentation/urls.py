@@ -18,7 +18,10 @@ urlpatterns = [
     ,path('ProcedureVue/<id>', views.getProcedureVue)
     ,path('PartenaireVue/<id>', views.getPartenaireVue)
 
-    ,path('Etude/<str:code>/', views.getParentVue,name='code')
+    ,path('Etude/<str:code>/', views.getParentVue)
+    ,path('Etude/<str:codeParent>/<str:codeFrame>/', views.getFrameVue)
+
+
 
 
 

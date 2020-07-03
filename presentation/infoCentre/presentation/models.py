@@ -15,9 +15,11 @@ class Kibana_frame(models.Model):
 
     def description(self):
         return self.description
-        
+    def nom(self):
+        return self.link
+
     code=models.CharField(max_length=100, unique=True,blank=False)
-    #parents_frame = models.ManyToManyField(Parent_frame)
+    nom=models.CharField(max_length=200,default="None")  
     link=models.TextField(blank=False, max_length=5000)
     description= models.TextField( max_length=5000,blank=True)
     height= models.PositiveIntegerField(default=1000)

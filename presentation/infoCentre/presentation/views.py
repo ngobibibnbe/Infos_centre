@@ -25,15 +25,34 @@ def welcome(request):
 def getParentVue(request,code):
     if request.user.is_authenticated:
         try:
-            frames=Parent_frame.objects.get(code=code).kibanas_frame.all()
+            parent=Parent_frame.objects.get(code=code)
+            frames=parent.kibanas_frame.all()
+            parents=Parent_frame.objects.all()
+            dico={'parents':parents}
         except Parent_frame.DoesNotExist:
             raise Http404("ce Code d'analyse n'existe pas ")
-        
-        return render(request,'visualisations/headContent/indicateur.html',{"height":frames,'user':request.user})
+        if frames is None:
+            raise Http404("y a pas d'enfants  ")
+        return render(request,'visualisations/headContent/indicateur.html',{'frames':frames,'parent':parent,'user':request.user,'parents':parents})
     else:
         raise Http404("Vous n'êtes pas autorisé à rentrer ici")
 
-
+def getFrameVue(request,codeParent, codeFrame):
+    if request.user.is_authenticated:
+        try:
+            parent=Parent_frame.objects.get(code=codeParent)
+            frames=parent.kibanas_frame.all()
+            parents=Parent_frame.objects.all()
+            dico={'parents':parents}
+            frame=Kibana_frame.objects.get(code=codeFrame)
+        except Parent_frame.DoesNotExist:
+            raise Http404("ce Code d'analyse n'existe pas ")
+        if frames is None:
+            raise Http404("y a pas d'enfants  ")
+        return render(request,'visualisations/headContent/indicateur.html',{'kibana_frame':'frame','frames':frames,'parent':parent,'user':request.user,'parents':parents})
+    else:
+        raise Http404("Vous n'êtes pas autorisé à rentrer ici")
+  
 
 def getDeadlineIndicatorsVue(request,id):
     if request.user.is_authenticated:

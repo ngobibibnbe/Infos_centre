@@ -8,13 +8,20 @@
 {% block headContent %}
 
 <div class="container" style="background-color: #4285f4 !important;">
+
+
+
             <div class="row">
-             
-              <div class="col"><a href="/infoCentre/DeadlineIndicatorsVue/KPI=1.1" type="button" class="btn btn-primary">
-              Délai d’obtention du document final</a>
-              </div>
-              <div class="col" ><a href="/infoCentre/DeadlineIndicatorsVue/kpi=1.2" type="button" class="btn btn-primary">
-              Taux de variation des dossiers </a></div>
+                {% if frames %}
+                      {% for frame in frames %}
+                        <div class="col"><a href="/infoCentre/Etude/{{parent.code}}/{{frame.code}}" type="button" class="btn btn-primary">
+                          {{frame.code}}</a>
+                        </div>
+                      {% endfor %}
+              {% else %}
+              {% endif %}
+              
+              
             </div>
           </div>
 {% endblock %}
