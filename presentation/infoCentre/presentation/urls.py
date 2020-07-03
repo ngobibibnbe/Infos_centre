@@ -18,6 +18,7 @@ urlpatterns = [
     ,path('ProcedureVue/<id>', views.getProcedureVue)
     ,path('PartenaireVue/<id>', views.getPartenaireVue)
 
+    ,path('Etude/<str:code>/', views.getParentVue,name='code')
 
 
 

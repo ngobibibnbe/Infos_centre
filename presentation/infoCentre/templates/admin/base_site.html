@@ -1,0 +1,39 @@
+
+{% extends "admin/base.html" %}
+{% load static %}
+
+<!-- plugins:css -->
+  <link rel="stylesheet" href="{%static 'presentation/assets/vendors/mdi/css/materialdesignicons.min.css'%}">
+  <link rel="stylesheet" href="{%static 'presentation/assets/vendors/css/vendor.bundle.base.css'%}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{%static 'presentation/assets/vendors/flag-icon-css/css/flag-icon.min.css'%}">
+  <link rel="stylesheet" href="{%static 'presentation/assets/vendors/jvectormap/jquery-jvectormap.css'%}">
+  <!-- End plugin css for this page -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="{%static 'presentation/assets/css/demo/style.css'%}">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="{%static 'presentation/assets/images/favicon.png'%}" />
+  <link rel="shortcut icon" href="{%static 'presentation/admin.css'%}" />
+
+
+<style >
+#header {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: #f0f0f0;
+    color: #e4bb22;
+    overflow: hidden;
+}
+</style >
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name" ><a style="color:#f09918" href="{% url 'admin:index' %}">InfoCentre Administration</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

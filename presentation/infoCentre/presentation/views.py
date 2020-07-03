@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect,Http404
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
-from .models import Kibana_frame
+from .models import Kibana_frame, Parent_frame
 
 
 
@@ -13,8 +13,25 @@ from .models import Kibana_frame
 template_name=""
 
 def welcome(request):
-    return render(request,'visualisations/welcome.html')
+    if request.user.is_authenticated:
+        parents=Parent_frame.objects.all()
+        dico={'parents':parents}
+        return render(request,'visualisations/welcome.html',dico)
+    else:
+        raise Http404("Vous n'êtes pas autorisé à rentrer ici")
 
+
+
+def getParentVue(request,code):
+    if request.user.is_authenticated:
+        try:
+            frames=Parent_frame.objects.get(code=code)
+        except Parent_frame.DoesNotExist:
+            raise Http404("ce Code d'analyse n'existe pas ")
+        
+        return render(request,'visualisations/headContent/indicateur.html',{"height":frames,'user':request.user})
+    else:
+        raise Http404("Vous n'êtes pas autorisé à rentrer ici")
 
 
 

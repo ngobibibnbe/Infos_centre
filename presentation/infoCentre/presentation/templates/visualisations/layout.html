@@ -62,15 +62,24 @@
                 Dashboard
               </a>
             </div>
-            <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-expansion-panel-link"  href="/infoCentre/DeadlineIndicatorsVue/PDMP" data-toggle="expansionPanel" data-target="idb-sub-menu">
-                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
-                              <P style=" margin-bottom: 0.1rem !important ;
-                  margin-top: 0;">
-                            Indicateur de delais </P>
-              </a>
-              
-            </div>
+
+            {% if parents %}
+                    {% for parent in parents %}
+                      <div class="mdc-list-item mdc-drawer-item">
+                        <a class="mdc-expansion-panel-link"  href="/infoCentre/Etude/{{parent.code}}" data-toggle="expansionPanel" data-target="idb-sub-menu">
+                          <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
+                                        <P style=" margin-bottom: 0.1rem !important ;
+                            margin-top: 0;">
+                                      {{parent.code}} </P>
+                        </a>
+                        
+                      </div>
+                    {% endfor %}
+            {% else %}
+                <h3>'Vous ne pouvez pas avoir accès aux parent'</h3>
+            {% endif %}
+
+           
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-expansion-panel-link"  href="/infoCentre/DossierVue/DB" data-toggle="expansionPanel" data-target="idb-sub-menu">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
