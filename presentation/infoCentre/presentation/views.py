@@ -25,7 +25,7 @@ def welcome(request):
 def getParentVue(request,code):
     if request.user.is_authenticated:
         try:
-            frames=Parent_frame.objects.get(code=code)
+            frames=Parent_frame.objects.get(code=code).kibanas_frame.all()
         except Parent_frame.DoesNotExist:
             raise Http404("ce Code d'analyse n'existe pas ")
         

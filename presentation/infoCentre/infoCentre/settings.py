@@ -147,3 +147,8 @@ SITE_ID=1
 TIME_ZONE = 'Europe/Paris'
 
 LANGUAGE_CODE = 'fr-FR'
+
+
+FIXTURE_DIRS = (
+   BASE_DIR + 'fixtures/',
+)

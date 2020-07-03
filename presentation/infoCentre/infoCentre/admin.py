@@ -23,7 +23,7 @@ class MyAdminSite(AdminSite):
 #    extra = 1
 
 class KibanaFrameAdmin(admin.ModelAdmin):
-    fields = ['code', 'description']
+    fields = ['code', 'link','description']
     list_display = ('code',  'description')
     #filter_horizontal = ('parents_frame',)
     search_fields = ['code']
@@ -34,6 +34,7 @@ class KibanaFrameAdmin(admin.ModelAdmin):
 class ParentFrameAdmin(admin.ModelAdmin):
     fields= ['code', 'nom', 'description','kibanas_frame']
     list_display = ('code','nom', 'description')
+    filter_horizontal = ('kibanas_frame',)
     search_fields = ['code']
 
     
