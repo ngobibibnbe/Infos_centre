@@ -1,15 +1,16 @@
-{% extends "visualisations/layout.html" %}
 
-{% load static %}
+<style>
+.conteneurIframe
+{
+position: relative;
+}
 
+a:isactive
+{
+}
+</style>
 
-{% block title %}InfoCentre Guce{% endblock %}
-
-{% block content %}
-<div>
-
-
-<iframe style="height= max-content ;" height={{kibana_frame.height}} width="1000" id="the_iframe" name="sizeframe" scrolling="no" frameborder="yes" onload=resize_iframe() src={{kibana_frame.link}}></iframe>
+</div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item"  style="height= max-content ;" height={{kibana_frame.height}} width="100%" id="the_iframe" name="sizeframe" scrolling="no" frameborder="yes" onload=resize_iframe() src="{{kibana_frame.link}}"></iframe>
 
 </div>
-{% endblock %}

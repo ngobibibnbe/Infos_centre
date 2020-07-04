@@ -1,4 +1,4 @@
-{% extends "visualisations/index.html" %}
+{% extends "visualisations/layout.html" %}
 
 {% load static %}
 
@@ -15,7 +15,7 @@
                 {% if frames %}
                       {% for frame in frames %}
                         <div class="col"><a href="/infoCentre/Etude/{{parent.code}}/{{frame.code}}" type="button" class="btn btn-primary">
-                          {{frame.code}}</a>
+                          {{frame.nom}}</a>
                         </div>
                       {% endfor %}
               {% else %}
@@ -25,3 +25,23 @@
             </div>
           </div>
 {% endblock %}
+{% block content %}
+
+{% include "visualisations/index.html" %}
+{% endblock %}
+
+
+ <Script>
+
+       $(.loader).onClick(
+         {
+           $.ajax({
+              url: vote_url,
+              success: function(){
+                  alert('Vote successful!);
+                  $("#iframe").load("/infoCentre/Etude/{{parent.code}}/{{frame.code}}");
+              },
+          });
+         }
+       )
+        </Script>

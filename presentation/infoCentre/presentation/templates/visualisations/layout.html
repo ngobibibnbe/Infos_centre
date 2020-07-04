@@ -30,7 +30,11 @@
   <link rel="stylesheet" href="{%static 'presentation/MDB/css/mdb.css'%}">
 
 
-
+<style>
+a:isactive{
+  color:yellow
+}
+</style>
     <link rel="stylesheet" href="style.css">
     <title>{% block title %}My amazing site{% endblock %}</title>
 </head>
@@ -284,7 +288,7 @@
       <!-- partial -->
       
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
-      {% block headContent %}{% endblock %}
+        {% block headContent %}{% endblock %}
       
         <main class="content-wrapper" >
           <div class="mdc-layout-grid">
@@ -292,16 +296,17 @@
 
             <div class="mdc-layout-grid__inner"
             style="
-                  @media (min-width: 992px)
+                  @media (min-width: 300px)
               .mdc-layout-grid__inner {
                   display: block;
-                  margin: 0; 
-                  grid-gap: 0px;}
+                  margin: 10; 
+                  grid-gap: 0px;
+                  }
 
             ">
               {% block content %}{% endblock %}
-            </div>
-          </div>
+            
+             </div>
         </main>
         <!-- partial:../../partials/_footer.html -->
         <footer>

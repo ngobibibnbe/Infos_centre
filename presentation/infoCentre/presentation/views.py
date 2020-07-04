@@ -6,7 +6,8 @@ from django.http import HttpResponse,HttpResponseRedirect,Http404
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
 from .models import Kibana_frame, Parent_frame
-
+import sys
+sys.setrecursionlimit(100)
 
 
 
@@ -49,7 +50,9 @@ def getFrameVue(request,codeParent, codeFrame):
             raise Http404("ce Code d'analyse n'existe pas ")
         if frames is None:
             raise Http404("y a pas d'enfants  ")
-        return render(request,'visualisations/headContent/indicateur.html',{'kibana_frame':'frame','frames':frames,'parent':parent,'user':request.user,'parents':parents})
+        return render(request,'visualisations/headContent/indicateur.html',{'kibana_frame':frame,'frames':frames,'parent':parent,'user':request.user,'parents':parents})
+        #return render(request,'visualisations/headContent/index.html',  {'kibana_frame':frame})
+
     else:
         raise Http404("Vous n'êtes pas autorisé à rentrer ici")
   
@@ -114,7 +117,7 @@ def getVue(request,id):
         except Kibana_frame.DoesNotExist:
             raise Http404("ce Code d'analyse n'existe pas ")
         
-        return render(request,'visualisations/index.html',{'link':link,"height":height,'user':request.user})
+        return render(request,'visualisations/layout.html',{'link':link,"height":height,'user':request.user})
     else:
         raise Http404("Vous n'êtes pas autorisé à rentrer ici")
 
